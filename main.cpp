@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "quickSort.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -58,5 +59,28 @@ int main() {
     for (int num : sorted) cout << num << " ";
     cout << endl;
     cout << "Time taken by merge sort: " << duration.count() << " microseconds" << endl;
+
+    // for quick sort
+    vector<int> nums1 = {10, 80, 30, 90, 40, 50, 70};
+
+    cout << "Original array: ";
+    for (int num : nums1) cout << num << " ";
+    cout << endl;
+
+    // Start time measurement
+    auto start1 = high_resolution_clock::now();
+
+    // Quick Sort
+    quickSort(nums, 0, nums1.size() - 1);
+
+    // End time measurement
+    auto stop1 = high_resolution_clock::now();
+    auto duration1 = duration_cast<microseconds>(stop1 - start1);
+
+    cout << "Sorted array: ";
+    for (int num : nums1) cout << num << " ";
+    cout << endl;
+
+    cout << "Time taken by Quick Sort: " << duration1.count() << " microseconds" << endl;
     return 0;
 }
